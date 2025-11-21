@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const { connectDB } = require("./config/db")
+const cookieParser=require('cookie-parser')
+const authRouter=require('./routes/authRoutes')
 require("dotenv").config();
 
 app.use(express.json());
+app.use(cookieParser())
 
-app.use("/", (req, res) => {
-    res.send("Hello Welcome to the server")
-})
+app.use("/", authRouter)
 
 connectDB().then(() => {
     console.log("DB connected successfully")
