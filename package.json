@@ -1,0 +1,12 @@
+{
+  "name": "devsamiti_server",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Akshay Malik",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  }
+}
