@@ -3,7 +3,7 @@
  - Requirement : User Management (signUp,Login),Developer Discovery,Chat option
  - Tech Stack : FrontEnd(React, tailwindcss, Redux) | BackEnd(Node.js, Express.js, WebSocket) | Database (MongoDb, Mongoose ORM)
 
-## Phase 2 (Feature,HLD, LLD)
+## Phase 2 Design (Feature,HLD, LLD)
  + Features
     - Create Account
     - Login
@@ -42,3 +42,7 @@
     - GET /request/received
     - GET /matches
     - WebSocket: /chat/:userId
+
+## Phase 3 Development
+ 
+
