@@ -3,6 +3,8 @@ const app = express();
 const { connectDB } = require("./config/db")
 require("dotenv").config();
 
+app.use(express.json());
+
 app.use("/", (req, res) => {
     res.send("Hello Welcome to the server")
 })
