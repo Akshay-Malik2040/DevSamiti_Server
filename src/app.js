@@ -4,13 +4,15 @@ const { connectDB } = require("./config/db")
 const cookieParser=require('cookie-parser')
 const authRouter=require('./routes/authRoutes')
 const profileRouter=require('./routes/profileRoutes')
+const requestRouter=require('./routes/requestRoutes')
 require("dotenv").config();
 
 app.use(express.json());
 app.use(cookieParser())
 
-app.use("/", authRouter)
+app.use("/", authRouter);
 app.use('/',profileRouter);
+app.use('/',requestRouter);
 
 connectDB().then(() => {
     console.log("DB connected successfully")

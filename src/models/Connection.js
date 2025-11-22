@@ -13,8 +13,8 @@ const ConnectionSchema=new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['pending','accepted','rejected','ignored'],
-        default: 'pending' },
+        enum: ['interested','accepted','rejected','ignored'],
+         },
 },{timestamps:true});
 
 module.exports=mongoose.model("Connection",ConnectionSchema);
