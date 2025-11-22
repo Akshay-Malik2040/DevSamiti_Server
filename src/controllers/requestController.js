@@ -38,7 +38,25 @@ const sendRequest = async (req, res) => {
 }
 
 const reviewRequest = async (req, res) => {
+    try{
+        const user = req.user;
+        const { status, requestId } = req.params;
+        const allowedStatus = ['accepted', 'rejected'];
+        if (!allowedStatus.includes(status)) throw new Error("Invalid Status type")
 
+        const connectionRequest=await Connection.findOne({
+            _id:requestId,
+            toUserId:user._id,
+            status:"interested",
+        })
+
+        if(!connectionRequest) throw new Error("Request Not Found");
+        connectionRequest.status=status;
+        const data=await connectionRequest.save();
+        res.json({message:`Connection Request ${status}`,user});
+    } catch(err){
+        res.status(400).json({message:err.message})
+    }
 }
 
-module.exports = { sendRequest }
+module.exports = { sendRequest,reviewRequest }
