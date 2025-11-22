@@ -55,4 +55,7 @@
  - requstRoutes and request Controller
  - request review logic
  - add userRoutes
+ - add user/request/received 
+ - add user/connections
+ - add /feed
 
