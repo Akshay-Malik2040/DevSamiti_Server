@@ -18,7 +18,7 @@ const signup = async (req, res) => {
         res.cookie("token", token)
         return res.json({ message: "User created Successfully", user: { id: user._id, firstName: user.firstName, emailId: user.emailId } });
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(400).json({ Error: err.message });
     }
 }
 
@@ -33,7 +33,7 @@ const login = async (req, res) => {
         res.cookie("token",token);
         res.json({message:"Login successfully",user});
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(400).json({ Error: err.message });
     }
 }
 

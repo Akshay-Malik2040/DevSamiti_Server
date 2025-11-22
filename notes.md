@@ -44,5 +44,12 @@
     - WebSocket: /chat/:userId
 
 ## Phase 3 Development
- 
+ - Add Signup controller and router using bcrypt and jwt token
+ - validate signup data using validator package
+ - Add login controller and authRouter
+ - Add logout authRouter
+ - Add profile router using auth middleware
+ - Add profileEdit router
+ - validate allowedEditProfileData in validation
+ - write logic for the profile edit
 
