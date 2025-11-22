@@ -14,9 +14,9 @@ const signup = async (req, res) => {
         const hashed = await bcrypt.hash(password, saltRounds);
         const user = await User.create({ ...req.body, password: hashed });
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || "7d" });
-        res.cookie("token", token)
-        return res.json({ message: "User created Successfully", user: { id: user._id, firstName: user.firstName, emailId: user.emailId } });
+        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || "7d" });
+        res.cookie("token", token, { httpOnly: true })
+        return res.json({ message: "User created Successfully", user: { _id: user._id, firstName: user.firstName, emailId: user.emailId } });
     } catch (err) {
         res.status(400).json({ Error: err.message });
     }
@@ -30,8 +30,8 @@ const login = async (req, res) => {
         const isPasswordValid=await bcrypt.compare(password,user.password);
         if(!isPasswordValid) throw new Error("Invalid Credentials");
         const token=jwt.sign({_id:user._id},process.env.JWT_SECRET,{expiresIn:process.env.JWT_EXPIRES_IN || "7d"});
-        res.cookie("token",token);
-        res.json({message:"Login successfully",user});
+        res.cookie("token",token, { httpOnly: true });
+        res.json({message:"Login successfully",user: { _id: user._id, firstName: user.firstName, emailId: user.emailId, profileImageUrl: user.profileImageUrl }});
     } catch (err) {
         res.status(400).json({ Error: err.message });
     }
