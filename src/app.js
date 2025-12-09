@@ -6,10 +6,16 @@ const authRouter=require('./routes/authRoutes')
 const profileRouter=require('./routes/profileRoutes')
 const requestRouter=require('./routes/requestRoutes')
 const userRouter=require('./routes/userRoutes')
+const cors=require('cors')
 require("dotenv").config();
 
 app.use(express.json());
 app.use(cookieParser())
+app.use(cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  }))
 
 app.use("/", authRouter);
 app.use('/',profileRouter);
